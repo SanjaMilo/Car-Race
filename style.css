@@ -1,0 +1,151 @@
+html, body {
+	margin: 0;
+}
+
+* {
+	box-sizing: border-box;
+}
+
+#race {
+	text-align: center;
+	background-color: #242021;
+}
+
+h1, h2, h3 {
+	color: 	#a2a2a2;
+}
+
+h3 { font-size: 25px; }
+
+h2 { font-size: 35px; }
+
+h1 { font-size: 50px; }
+
+/*use these below*/
+/*car1 color*/
+/* color: #ffebf7; */
+/*car2 color*/
+/* color: #ba0000; */
+
+.row {
+	margin-left: 0px;
+	margin-right: 0px;
+}
+
+.btn-dark {
+	font-size: 16px;
+	background-color: #242021;
+	color: #dddddd !important;
+	border: 2px solid #dddddd;
+	border-radius: 5px;
+	padding: 7px 50px;
+	margin: 10px;
+}
+.btn-dark:hover {
+	color: magenta !important;
+	border: 2px solid magenta;
+}
+
+.wrapper {
+	position: relative;
+}
+
+.bg-racing-track {
+	opacity: 1;
+	height: 400px;
+	background-image: url("img/raceTrackA.jpg");
+	background-position: center;
+	background-repeat: repeat-x;
+}
+
+img {
+	width: 300px;
+	height: 300px;
+}
+
+.cars {
+	display: block;
+	position: relative;
+}
+
+#car1 {
+	bottom: 30px;
+}
+
+#car2 {
+	bottom: 160px;
+}
+
+.flag {
+	display: none;
+	width: 250x;
+	height: 230px;
+	position: absolute;
+	top: 50%;
+  	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+.counter {
+	display: none;
+	position: absolute;
+	top: 47%;
+  	left: 50%;
+	transform: translate(-50%, -50%);
+	font-size: 111px;
+	color: white;
+	text-shadow: 2px 2px 8px magenta;
+}
+
+.first-car {
+	float: left;
+}
+
+.second-car {
+	float: right;
+}
+
+#first {
+	padding: 10px;
+	text-align: center;
+	color: #ffebf7;
+	font-weight: 600;
+	font-size: 16px;
+}
+
+#second {
+	padding: 10px;
+	text-align: center;
+	color: #ba0000;
+	font-weight: 600;
+	font-size: 16px;
+}
+
+.car-left,
+.car-right,
+.storage {
+	padding: 15px;
+	color: #a2a2a2;
+	border: 2px solid #dddddd;
+}
+
+.stor-car1 {
+	margin-top: 63px;
+}
+
+span.white {
+	font-weight: 600;
+	color: #ffebf7;
+}
+
+span.red {
+	font-weight: 600;
+	color: #ba0000;
+}
+
+
+/* Ne raboti so klasava */
+
+/* .hidden-results {
+	display: none;
+} */

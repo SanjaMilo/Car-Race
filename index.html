@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Car racing game</title>
+	<meta name="keywords" content="html,css,lekcii">
+	<meta name="description" content="ova e strana za ucenje">
+	<meta name="author" content="Kristijan Bobevski">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+	<!-- Latest compiled and minified BOOTSTRAP CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+	<!-- Local CSS -->
+	<link rel="stylesheet" type="text/css" href="style.css">
+
+	<!-- Font-awesome 4.7 cdn -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body id="race">
+
+	<h1>Car Racing Game</h1>
+
+	<div class="row header">
+		<button id="start" class="btn btn-dark" type="button">Race!</button>
+		<button id="reset" class="btn btn-dark" type="button">Start over</button>
+	</div>
+
+	<div class="wrapper">
+		<div class="row bg-racing-track">
+			<img id="car1" class="cars" src="img/car2.gif" alt="First Racing Car">
+			<img id="car2" class="cars" src="img/car1.gif" alt="Second Racing car">
+		</div>
+		<img class="flag" src="img/finish.gif" alt="">
+		<p class="counter"></p>
+	</div>
+
+
+	<div class="row results">
+
+		<div class="col-md-6 col-sm-6">
+			<h2>Results</h2>
+
+			<div class="row">
+				<div class="col-md-6 col-sm-6 text-center col-left">
+					<div id="first">Car 1</div>
+					<!-- <div class="car-left">Nesto tekst tuka malku podolg tekst nesto pak da pisuva demek prvo mesto e</div> -->
+				</div>
+				<div class="col-md-6 col-sm-6 text-center col-right">
+					<div id="second">Car 2</div>
+					<!-- <div class="car-right">Nesto tekst tuka malku podolg tekst nesto pak da pisuva demek prvo mesto e</div>
+					<div class="car-right">Nesto pak tuka</div> -->
+				</div>
+			</div>
+			
+		</div>
+
+		<div class="col-md-6 col-sm-6 text-center results-prev">
+			<!-- <h3 id="res" class="hidden-results">Results from the previous time you played this game:</h3> -->
+			<!-- <div class="storage stor-car1">Tuka nekoj tekst treba da se ispise, kao da ima nesto za citanje</div>
+			<div class="storage stor-car2">Tuka nekoj tekst treba da se ispise, kao da ima nesto za citanje</div> -->
+		</div>
+
+	</div>
+
+
+	<!-- write your code here -->
+
+	<!-- jQuery library -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
+
+	<script src="app.js"></script>
+
+	<!-- Latest compiled JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</body>
+
+</html>
