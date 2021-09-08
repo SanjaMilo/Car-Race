@@ -1,27 +1,23 @@
 $(function(){
 	
-    // on click on button "Start" 
+    // on click on button "Race!"  (starts the race)
     
     $('#start').click(function() {
        
-        // odbrojuvanje na pocetok na trkata e na klik na kopceto start, i e so zatemnuvanje na trakata za trka
+        // Countdown by clicking on the start button and dim the racing track
         $(".bg-racing-track").animate({
             opacity: "0.5" 
         }, 100).delay(3000).animate({
             opacity: "1"
         }, 100);
 
-        // posle startot na igrata, dvete kopcinja se desabled dodeka ne zavrsi
+        // After the start of the race, the two buttons are disabled until the finish of the race
 
         $('#start').attr("disabled", "disabled");
         $('#reset').attr("disabled", "disabled");
+        
 
-        // odbrojuvanjeto pred startot
-        // let count = 3;
-        // $('.counter').show();
-        // $(".counter").text(count);
-
-        // OVA FUNKCIONIRA ODLICHNO !!! 
+        // // This is an option also:
         // function countDown() {
         //     if (count > 1) {
         //         count --; 
@@ -33,21 +29,6 @@ $(function(){
         // }
         // setTimeout(countDown, 1000);
 
-        // setInterval pravi problem so kratenje na intervalot koga odnovo se igra a setTimeout ne pravi problem. Resenietoto e so setTimeout !!!
-        // Vaka ne, pogresno e, koga ke vleze vo else ne se cisti intervalot i odborjuva celo vreme! 
-        // setInterval(function() {
-        //     if (count > 1) {
-        //         count --; 
-        //         $(".counter").text(count);
-        //     } else {
-        //         clearInterval();
-        //         $(".counter").text('');
-        //         console.log('nesto tuka');
-        //     }
-        // }, 1000);
-
-
-        // Ova raboti : 
         let count = 3;
         $('.counter').show();
         $(".counter").text(count);
@@ -58,7 +39,6 @@ $(function(){
                 $(".counter").text(count);
             } else {
                 $(".counter").text('');
-                console.log('nesto tuka'); // test
                 clearInterval(timer);
             }
         };
@@ -71,7 +51,7 @@ $(function(){
         }, 1000);
         
 
-        // Moze i vaka (isto raboti, dobro e!)
+        // // This is an option also:
         // function counting() {
         //     if (count > 1) {
         //         $('.counter').show();
@@ -90,18 +70,20 @@ $(function(){
         //     }
         // }, 1000);
 
-        // dolzina na kolata  da se odzeme od shirinata na window za da se dobie dolzina na trakata do finish (za da ne izleze nadvor od view port kolata)
+
+        // Subtract the lenth of the car from the window width, in order to get the lenth of the track till finish (and avoid car exit from the view port)
+
         let carWidth = $('#car1').width();
         let racingTrackWidth = $(window).width() - carWidth;
-        // random vreminja za dvete koli od 1 so 5000 milisecundi
+        // random timing for the both cars, from 1 to 5000 milliseconds 
         let time1 = Math.ceil(Math.random() * 6000);
         let time2 = Math.ceil(Math.random() * 6000);
 
-        let isFinished = false; // na pocetok trkata ja setirame da ne e zavrshena
+        let isFinished = false; // at the start we set the race to be not finished
 
-        let place = 'first'; // setirame varijalbla za mesto da e 'first'
+        let place = 'first'; // setting variable for the 'first' place reaching car (winner)
 
-        // funkcija koja proveruva dali nekoja kola ja stignala celta 
+        // Check if any car has reached the Finish line
         function checkFinished() {
             if (isFinished  == false) {
                 isFinished = true;
@@ -112,7 +94,7 @@ $(function(){
             }
         };
 
-        // za kolata 1 animacija : 
+        // Animation for the car 1 : 
 
         $('#car1').delay(3000).animate({
             left: racingTrackWidth 
@@ -123,7 +105,7 @@ $(function(){
             localStorage.setItem('firstCar', `<div class="storage stor-car1"><span class="white">Car1</span> finished in <span class="white">${place}</span>, with a time of <span class="white">${time1}</span> milliseconds!</div>`);
         });
 
-        // za kolata 2 animacija : 
+        // Animation for car 2 : 
 
         $('#car2').delay(3000).animate({
             left: racingTrackWidth 
@@ -133,44 +115,35 @@ $(function(){
 
             localStorage.setItem('secondCar', `<div class="storage stor-car2"><span class="red">Car2</span> finished in <span class="red">${place}</span>, with a time of <span class="red">${time2}</span> milliseconds!</div>`);
             
-            // ovde samo na kopceto 'restart' za da gi vrati kolite levo, a posle klik na restart, da moze da se klikne nov 'start' za nova igra
+            // Remove disabled on the "Start over" to return the cars on the left side on the start position.
             $('#reset').removeAttr("disabled");
         });
     });
 
-    // On click on button "Start over", da se resetira igrata, so toa sto kolite se vrakjaat na strtna pozicija, sosema levo
+    // On click "start over", the race restarts, the cars are on left start position
 
     $('#reset').click(function() {
 
-        $('#start').removeAttr("disabled"); // start moze da se klikne samo posle restart i pozicioniranje na kolite levo
+        $('#start').removeAttr("disabled"); // you can click on Race! only after resetting - repositioning the cars
         $(".bg-racing-track").css('opacity', "1");
         $('.flag').css('display', 'none');
         $('#car1').css('left', '0');
         $('#car2').css('left', '0');
     });
 
-    // On load na stranata (na refresh) treba da se pojavat rezumtatite od poslednata trka socuvani vo local storage i da se prikazat vo desniot del vo dva reda : 
-    
+    // On page reload (refresh) the results from previous race show on the right-bottom side 
 
     let locStoCar1 = localStorage.getItem('firstCar');
     let locStoCar2 = localStorage.getItem('secondCar');
-    // ako postoi nesto vo Local storage, samo togas da go prikaze i naslovot (ako nema nisto, da ne se pojavuva naslovot)
+    
+    // If there is data in local storage, only than show the title "Results from previous game..."
+
     if (locStoCar1 || locStoCar2) {
         $('.results-prev').append(`<h3>Results from the previous time you played this game:</h3>`);
         $('.results-prev').append(locStoCar1);
         $('.results-prev').append(locStoCar2);
     };
-    
-    // if(localStorage.getItem('firstCar') || localStorage.getItem('secondCar')) {
-    //     // $('h3 #res').removeClass('results-prev'); // ne raboti so klasava
-    //     $('.results-prev').append(`<h3>Results from the previous time you played this game:</h3>`);
-    // } else {
-    //     // $('h3 #res').addClass('results-prev');  // ne raboti so klasava 
-    // };
-    
-    // $('.results-prev').append(localStorage.getItem('firstCar'));
-    // $('.results-prev').append(localStorage.getItem('secondCar'));
-    // console.log(localStorage.getItem('firstCar')); // za test
 
-    localStorage.clear(); // za da na vtor reload (refresh na stranata) na stranata se izbrisat rezultatite i se sto e vo desniot del (go staviv za da mozam da testiram, moze da se trgne)
+    localStorage.clear(); 
+    // On the second page reload remove the results from previous race (this is just added for testing purposes, to remove clear local storage)
 });
